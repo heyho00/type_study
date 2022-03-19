@@ -5,14 +5,14 @@ var 이름오브젝트 = { name: "kim" };
 var union = 123;
 var 네임 = 123;
 function 함수(x) {
-    //변수에 타입지정도 가능, 어떤 타입이 리턴될지도 지정가능!(뒤에꺼)
-    return x * 2;
+  //변수에 타입지정도 가능, 어떤 타입이 리턴될지도 지정가능!(뒤에꺼)
+  return x * 2;
 }
 함수("123"); //문자열이 들어가면 에러가난다.
 var john = [123, true];
 var User = /** @class */ (function () {
-    function User(name) {
-        this.name = name;
-    }
-    return User;
-}());
+  function User(name) {
+    this.name = name;
+  }
+  return User;
+})();

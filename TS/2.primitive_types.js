@@ -14,7 +14,7 @@ var 박씨 = "park"; //타입지정 원래 자동으로 된다. 타입지정 문
 //     started : true,
 //   }
 var project = {
-    member: ["kim", "park"],
-    days: 30,
-    started: true,
+  member: ["kim", "park"],
+  days: 30,
+  started: true,
 };
