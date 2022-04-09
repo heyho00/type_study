@@ -93,22 +93,28 @@ array destructuring할 땐 변수이름 맘대로 작명가능합니다.
 
 변수만들 때 기존 object에 있던 자료를 파라미터로 집어넣고 싶으면
 
-let person = { student : true, age : 20 }
+```jsx
+let person = { student: true, age: 20 };
 
-function 함수(a, b){
-console.log(a, b)
+function 함수(a, b) {
+  console.log(a, b);
 }
-함수(person.student, person.age)
+함수(person.student, person.age);
+```
+
 기존 object에 있던걸 person.student 이렇게 각각 찝어서 집어넣으면 되긴 되는데
 
 destructuring 문법을 이용하면 약간 더 쉽게 사용가능합니다.
 
-let person = { student : true, age : 20 }
+```jsx
+let person = { student: true, age: 20 };
 
-function 함수({student, age}){
-console.log(student, age)
+function 함수({ student, age }) {
+  console.log(student, age);
 }
-함수({ student : true, age : 20 })
+함수({ student: true, age: 20 });
+```
+
 실은 안쉬운듯
 
 그니까 파라미터 변수만들 때 { student, age }라고 쓰면

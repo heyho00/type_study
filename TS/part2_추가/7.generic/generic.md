@@ -8,14 +8,19 @@
 
 함수 return 값의 타입이 애매하면
 
-예를 들어 1. 아무렇게나 생긴 array 자료를 입력하면 2. array의 첫 자료를 그대로 출력해주는 함수를 만들었다고 합시다.
+예를 들어
 
+> 1. 아무렇게나 생긴 array 자료를 입력하면 2. array의 첫 자료를 그대로 출력해주는 함수를 만들었다고 합시다.
+
+```jsx
 function 함수(x: unknown[]) {
-return x[0];
+  return x[0];
 }
 
-let a = 함수([4,2])
-console.log(a)
+let a = 함수([4, 2]);
+console.log(a);
+```
+
 이러면 콘솔창에 4가 출력됩니다.
 
 근데 마우스 올려서 a의 타입을 확인해보면 숫자는 아니고 unknown 타입입니다.
@@ -28,12 +33,15 @@ console.log(a)
 
 그런거 안해준다는 것입니다.
 
+```jsx
 function 함수(x: unknown[]) {
-return x[0];
+  return x[0];
 }
 
-let a = 함수([4,2])
-console.log(a + 1)
+let a = 함수([4, 2]);
+console.log(a + 1);
+```
+
 그래서 이런 연산도 에러가 납니다.
 
 a는 사람이 보기에 분명히 숫자가 맞지만 아직 타입은 unknown 타입이니까요.
@@ -46,24 +54,29 @@ a는 사람이 보기에 분명히 숫자가 맞지만 아직 타입은 unknown 
 
 예를 들면 "함수가 10을 return 하는데 타입이 unknown 이라서 맘대로 조작을 못하네" 문제요
 
-해결책은 1. narrowing 잘 하면 해결됩니다. 근데 귀찮음
+해결책은
 
-2. 그냥 애초에 타입을 파라미터로 함수에 미리 입력하는 방법도 있습니다. 그럼 원하는 곳에 가변적으로 타입지정 가능
+### 1. narrowing 잘 하면 해결됩니다. 근데 귀찮음
 
-2번을 Generic 이라고 부릅니다.
+### 2. 그냥 애초에 타입을 파라미터로 함수에 미리 입력하는 방법도 있습니다. 그럼 원하는 곳에 가변적으로 타입지정 가능
 
-Generic 적용한 함수만들기
+2번을 **Generic** 이라고 부릅니다.
+
+## Generic 적용한 함수만들기
 
 함수에 <> 이런 괄호를 열면 파라미터를 또 입력할 수 있습니다.
 
 근데 여기 안엔 타입만 입력할 수 있습니다. 타입파라미터 문법임
 
-function 함수<MyType>(x: MyType[]) :MyType {
-return x[0];
+```jsx
+function 함수<MyType>(x: MyType[]): MyType {
+  return x[0];
 }
 
-let a = 함수<number>([4,2])
-let b = 함수<string>(['kim', 'park'])
+let a = 함수 < number > [4, 2];
+let b = 함수 < string > ["kim", "park"];
+```
+
 그럼 이제 함수를 사용할 때도 <> 안에 파라미터처럼 타입을 입력할 수 있습니다.
 
 그럼 님들이 이제 함수<number>( ) 이렇게 쓰는 순간
@@ -82,12 +95,15 @@ b 변수는 return되는 타입이 뭐게요 맞춰보셈
 
 <> 문법만 잘 쓰면 됩니다.
 
-function 함수<MyType>(x: MyType[]) :MyType {
-return x[0];
+```jsx
+function 함수<MyType>(x: MyType[]): MyType {
+  return x[0];
 }
 
-let a = 함수([4,2])
-let b = 함수(['kim', 'park'])
+let a = 함수([4, 2]);
+let b = 함수(["kim", "park"]);
+```
+
 실은 함수 사용시 꼭 <> 안써도 알아서 기본 타입을 유추해서 집어넣어줍니다.
 
 이래도 결과는 똑같습니다.
@@ -102,11 +118,14 @@ let b = 함수(['kim', 'park'])
 
 함수 이런거 만들었는데 왜 에러가 나는 것이죠?
 
+```jsx
 function 함수<MyType>(x: MyType) {
-return x - 1
+  return x - 1;
 }
 
-let a = 함수<number>(100)
+let a = 함수 < number > 100;
+```
+
 <MyType> 자리에 number 이런거 타입 꽂아넣으면
 
 MyType 붙은 곳에 다 집어넣어진다면서요
@@ -121,7 +140,7 @@ MyType 붙은 곳에 다 집어넣어진다면서요
 
 그래서 해결책은 narrowing을 하셔도 되는데 MyType에 집어넣을 수 있는 타입을 미리 제한하는 것도 하나의 해결책입니다.
 
-Generic 타입 제한하기 (constraints)
+## Generic 타입 제한하기 (constraints)
 
 extends 문법을 쓰면 넣을 수 있는 타입을 제한할 수 있습니다.
 
@@ -131,11 +150,14 @@ interface 문법에 쓰는 extends와는 살짝 다른 느낌입니다.
 
 그 extends는 복사인데 이번 extends는 number와 비슷한 속성을 가지고 있는지 if 문으로 체크하는 문법이라고 보면 됩니다.
 
+```jsx
 function 함수<MyType extends number>(x: MyType) {
 return x - 1
 }
 
 let a = 함수<number>(100) //잘됩니다
+```
+
 그래서 그렇게 써봤습니다. 이러면 에러없이 잘됩니다.
 
 return 타입지정을 안한 이유는 숫자 - 숫자를 했으니 알아서 number 타입이 됩니다.
@@ -144,11 +166,14 @@ return 타입지정을 안한 이유는 숫자 - 숫자를 했으니 알아서 n
 
 예를 들어서 문자로 파라미터를 넣으면 자릿수를 세어서 출력해주는 함수를 Generic으로 만들고 싶습니다.
 
+```jsx
 function 함수<MyType>(x: MyType) {
-return x.length
+  return x.length;
 }
 
-let a = 함수<string>('hello')
+let a = 함수 < string > "hello";
+```
+
 문자에 .length 붙이면 몇자리의 문자인지 출력해주는데
 
 에러나고 안됩니다.
@@ -161,6 +186,7 @@ let a = 함수<string>('hello')
 
 이번엔 interface로 만들어둔 타입을 extends 해봅시다. 제맘임
 
+```jsx
 interface lengthCheck {
 length : number
 }
@@ -170,6 +196,7 @@ return x.length
 
 let a = 함수<string>('hello') //가능
 let a = 함수<number>(1234) //에러남
+```
 
 1. length 속성을 가지고 있는 타입을 하나 만들었습니다. 이름은 lengthCheck로 했습니다.
 
