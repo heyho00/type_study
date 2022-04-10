@@ -32,7 +32,7 @@ parseInt([1,2,3]) 숫자로 바꿔주는 함수에 뭔가 이상한걸 넣어도
 
 > npx create-react-app my-app --template typescript
 
-## Note
+## Notice
 
 1. generic 살짝 이해 덜 됨.
 2. react + ts redux toolkit deep dive 필요.
