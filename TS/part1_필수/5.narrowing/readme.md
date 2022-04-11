@@ -1,3 +1,5 @@
+# narrowing
+
 ```jsx
 function 내함수(x: number | string) {
   return x + 1; //x가 유니언타입이기 때문.

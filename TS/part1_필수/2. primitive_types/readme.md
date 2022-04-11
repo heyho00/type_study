@@ -1,7 +1,7 @@
 ## 변수에 타입지정 = 변수에 실드 씌우는 것.
 
 ```jsx
-let namee: string = "kim";
+let name: string = "kim";
 let age: number = 30;
 let 바보니: boolean = true;
 let 널: null = null;

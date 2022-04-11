@@ -1,15 +1,20 @@
+# 10분 정리
+
 ```jsx
 var 이름: string = "kim";
 let 이름배열: string[] = ["kim", "park"];
 let 이름오브젝트: { name: string } = { name: "kim" };
-
+```
 
 다양한 타입이 들어올 수 있게 하려면 union type
 
+```jsx
 let union: string | number = 123;
-
+```
 
 타입은 변수에 담아 쓸 수 있음.
+
+```jsx
 type Name = string | number; //보통 대문자로 지정해 일반변수와 구분한다.
 let 네임: Name = 123;
 
@@ -25,7 +30,7 @@ let john: Member = [123, true];
 
 //여기 들어갈 자료가 되게 많다면? age, sex 등등 100개 있다면?
 type Member2 = {
-  [key: string]: string; //문자로 들어오는 키들의 밸류가 문자여야한다. 이런식으로..
+  [key: string]: string, //문자로 들어오는 키들의 밸류가 문자여야한다. 이런식으로..
 };
 
 class User {

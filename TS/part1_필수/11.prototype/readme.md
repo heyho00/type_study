@@ -1,4 +1,6 @@
-class 배웠으면 꼭 함께 prototype이라는 개념도 등장합니다.
+class 배웠으면 꼭 함께
+
+# prototype이라는 개념도 등장합니다.
 
 상속기능을 구현할 수 있는 장치인 prototype에 대해 알아봅시다.
 

@@ -19,7 +19,7 @@ type Changer<MyType> = {
 
 type 새타입 = Changer<Bus>;
 
-let 샘플: 새타입 = {
+let 샘플2: 새타입 = {
   color: "white",
   model: 3,
   price: "200",
